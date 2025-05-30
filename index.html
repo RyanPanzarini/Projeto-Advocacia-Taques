@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silva & Associados | Advocacia Especializada</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            transition: all 0.3s ease;
+        }
+        
+        .modal-content {
+            background-color: #1E1E1E;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 90%;
+            animation: fadeIn 0.3s;
+            color: white;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: white;
+        }
+        
+        /* Cookie banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1E1E1E;
+            padding: 15px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+          .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200 font-size smooth-scroll">
+    <!-- Navigation -->
+    <nav class="bg-gray-800 text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold flex items-center font-playfair">
+                <i class="fas fa-balance-scale mr-2 text-gray-500"></i>
+                <span class="text-white-500">Taques</span> Advocacia 
+            </a>
+            
+            <div class="hidden md:flex space-x-6 items-center font-playfair">
+                <a href="#home" class="hover:text-amber-400 transition">Home</a>
+                <a href="#about" class="hover:text-amber-400 transition">Sobre</a>
+                <a href="#services" class="hover:text-amber-400 transition">Áreas</a>
+                <a href="#team" class="hover:text-amber-400 transition">Equipe</a>
+                <a href="#blog" class="hover:text-amber-400 transition">Blog</a>
+                <a href="#contact" class="hover:text-amber-400 transition">Contato</a>
+                <a href="https://wa.me/5511999999999" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition ml-4">
+                    <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+                </a>
+            </div>
+            
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 px-4 pb-4">
+            <a href="#home" class="block py-2 hover:text-amber-400 transition">Home</a>
+            <a href="#about" class="block py-2 hover:text-amber-400 transition">Sobre</a>
+            <a href="#services" class="block py-2 hover:text-amber-400 transition">Áreas</a>
+            <a href="#team" class="block py-2 hover:text-amber-400 transition">Equipe</a>
+            <a href="#blog" class="block py-2 hover:text-amber-400 transition">Blog</a>
+            <a href="#contact" class="block py-2 hover:text-amber-400 transition">Contato</a>
+            <a href="https://wa.me/5511999999999" target="_blank" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition mt-2 text-center">
+                <i class="fab fa-whatsapp mr-2"></i>WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center bg-[url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center before:absolute before:inset-0 before:bg-black before:opacity-70">
+        <div class="container mx-auto px-4 z-10 text-center text-white font-playfair">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 fade-in">
+                <span class="text-gray-400">Justiça</span> com Excelência e Ética
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto fade-in delay-1 font-playfair">Defendemos seus direitos com comprometimento e expertise jurídica de alto nível.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 fade-in delay-2">
+                <a href="#contact" class="bg-gray-600 hover:bg-amber-700 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 shadow-lg">
+                    Fale Conosco
+                </a>
+                <a href="#services" class="bg-transparent hover:bg-white/10 border-2 border-white text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 shadow-lg">
+                    Nossos Serviços
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-playfairfont-playfair">Sobre o Escritório</h2>
+                <div class="w-24 h-1 bg-gray-500 mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 fade-in">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Escritório de Advocacia" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+                
+                <div class="lg:w-1/2 fade-in delay-1">
+                    <h3 class="text-2xl font-bold text-white mb-6 font-playfair">Nossa História e Valores</h3>
+                    <p class="text-gray-300 mb-4 font-playfair">Fundada em 2005, a Taques Advocacia surgiu com o propósito de oferecer soluções jurídicas personalizadas e eficientes, sempre pautadas pela ética e excelência profissional.</p>
+                    <p class="text-gray-300 mb-6 font-playfair">Nossa missão é garantir que cada cliente receba atenção individualizada e estratégias jurídicas sob medida para suas necessidades específicas.</p>
+
+                    <div class="mb-8">
+                        <div class="flex items-center mb-3">
+                            <div class="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                            <span class="font-semibold text-white font-playfair">Compromisso com a excelência</span>
+                        </div>
+                        <div class="flex items-center mb-3">
+                            <div class="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                            <span class="font-semibold text-white font-playfair">Atendimento personalizado</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center mr-3">
+                                <i class="fas fa-check text-white"></i>
+                            </div>
+                            <span class="font-semibold text-white font-playfair">Transparência e ética</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#team" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 shadow-lg text-center font-playfair">
+                            Conheça Nossa Equipe
+                        </a>
+                        <button onclick="openMapModal()" class="bg-transparent hover:bg-gray-700 border-2 border-gray-500 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 shadow-lg text-center font-playfair">
+                            Ver Localização
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-playfair">Áreas de Atuação</h2>
+                <div class="w-24 h-1 bg-gray-500 mx-auto"></div>
+                <p class="text-gray-300 mt-6 max-w-2xl mx-auto font-playfair">Oferecemos expertise em diversas áreas do Direito para atender todas as suas necessidades jurídicas.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Area 1 -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-md card-hover fade-in">
+                    <div class="w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-briefcase text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 font-playfair">Direito Empresarial</h3>
+                    <p class="text-gray-300 mb-4 font-playfair">Atendimento jurídico completo para empresas, desde constituição até questões societárias complexas.</p>
+                    <button onclick="openServiceModal('Direito Empresarial', 'Oferecemos assessoria jurídica completa para empresas de todos os portes, incluindo:', ['Constituição e registro de empresas', 'Contratos societários', 'Fusões e aquisições', 'Recuperação judicial e extrajudicial', 'Compliance e governança corporativa'], 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')" class="text-amber-400 hover:text-amber-300 font-medium transition">
+                        Saiba mais <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <!-- Area 2 -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-md card-hover fade-in delay-1">
+                    <div class="w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-gavel text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 font-playfair">Direito Civil</h3>
+                    <p class="text-gray-300 mb-4 font-playfair">Atuação em contratos, responsabilidade civil, direito das obrigações e questões familiares.</p>
+                    <button onclick="openServiceModal('Direito Civil', 'Atuamos em todas as áreas do Direito Civil, com destaque para:', ['Contratos em geral', 'Responsabilidade civil', 'Direito das obrigações', 'Direito de família e sucessões', 'Direito do consumidor'], 'https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')" class="text-amber-400 hover:text-amber-300 font-medium transition">
+                        Saiba mais <i class="fas fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                
+                <!-- Area 3 -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-md card-hover fade-in delay-2">
+                    <div class="w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-user-tie text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 font-playfair">Direito Trabalhista</h3>
+                    <p class="text-gray-300 mb-4 font-playfair">Defesa de empregados e empregadores em ações trabalhistas e consultoria preventiva.</p>
+                    <button onclick="openServiceModal('Direito Trabalhista', 'Atendemos tanto empregados quanto empregadores em questões como:', ['Rescisões contratuais', 'Assédio moral e sexual', 'Horas extras e adicional noturno', 'Equiparação salarial', 'Ações coletivas'], 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')" class="text-amber-400 hover:text-amber-300 font-medium transition">
+                        Saiba mais <i class="fas fa-arrow-right ml-1 font-playfair"></i>
+                    </button>
+                </div>
+                
+                <!-- Area 4 -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-md card-hover fade-in">
+                    <div class="w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-home text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 font-playfair">Direito Imobiliário</h3>
+                    <p class="text-gray-300 mb-4 font-playfair">Regularização de imóveis, contratos de compra e venda, locação e questões condominiais.</p>
+                    <button onclick="openServiceModal('Direito Imobiliário', 'Atuamos em todas as questões relacionadas a imóveis, incluindo:', ['Regularização de imóveis', 'Contratos de compra e venda', 'Contratos de locação', 'Questões condominiais', 'Usucapião e desapropriação'], 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80')" class="text-amber-400 hover:text-amber-300 font-medium transition">
+                        Saiba mais <i class="fas fa-arrow-right ml-1 font-playfair"></i>
+                    </button>
+                </div>
+                
+                <!-- Area 5 -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-md card-hover fade-in delay-1">
+                    <div class="w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-heart text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 font-playfair">Direito de Família</h3>
+                    <p class="text-gray-300 mb-4 font-playfair">Divórcios, pensão alimentícia, guarda de filhos e inventários com sensibilidade e expertise.</p>
+                    <button onclick="openServiceModal('Direito de Família', 'Atendemos com sensibilidade e expertise em questões familiares como:', ['Divórcio consensual e litigioso', 'Pensão alimentícia', 'Guarda de filhos e regulamentação de visitas', 'Inventário e partilha de bens', 'Reconhecimento e dissolução de união estável'], 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80')" class="text-amber-400 hover:text-amber-300 font-medium transition">
+                        Saiba mais <i class="fas fa-arrow-right ml-1 font-playfair"></i>
+                    </button>
+                </div>
+                
+                <!-- Area 6 -->
+                <div class="bg-gray-800 rounded-lg p-6 shadow-md card-hover fade-in delay-2">
+                    <div class="w-16 h-16 bg-gray-500 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-lock text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3 font-playfair">Direito Penal</h3>
+                    <p class="text-gray-300 mb-4 font-playfair">Defesa em processos criminais, habeas corpus e assessoria em inquéritos policiais.</p>
+                    <button onclick="openServiceModal('Direito Penal', 'Atuamos na defesa de clientes em todas as fases do processo penal:', ['Defesa em inquéritos policiais', 'Ações penais em geral', 'Habeas corpus e medidas cautelares', 'Recursos criminais', 'Assessoria em liberdade provisória'], 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')" class="text-amber-400 hover:text-amber-300 font-medium transition">
+                        Saiba mais <i class="fas fa-arrow-right ml-1 font-playfair"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="py-20 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-playfair">Nossa Equipe</h2>
+                <div class="w-24 h-1 bg-gray-500 mx-auto"></div>
+                <p class="text-gray-300 mt-6 max-w-2xl mx-auto font-playfair">Profissionais altamente qualificados e comprometidos com a defesa de seus direitos.</p>
+            </div>
+            
+            <!-- Team Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Lawyer 1 -->
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden card-hover fade-in">
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <img src="imagens/Imagem do WhatsApp de 2025-05-30 à(s) 17.14.54_283dbebe.jpg" alt="Advogada" class="w-32 h-32 rounded-full object-cover border-4 border-gray-500 mb-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-white font-playfair">Dr. Felipe Taques</h4>
+                            <p class="text-gray-400 font-medium mb-2 font-playfair">Sócio Fundador | OAB/SP 123.456</p>
+                            <p class="text-gray-300 text-sm mb-4 font-playfair">Especialista em Direito Empresarial e Cavalos</p>
+                            <div class="flex justify-center gap-3">
+                                <a href="https://wa.me/5511999999999" target="_blank" class="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full transition transform hover:scale-110">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition transform hover:scale-110">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <button onclick="openProfileModal('Dra. Ana Beatriz Silva', 'Sócia Fundadora', 'OAB/SP 123.456', 'https://randomuser.me/api/portraits/women/45.jpg', 'Com mais de 20 anos de experiência na área jurídica, Dra. Ana Beatriz Silva é especialista em Direito Empresarial e Civil. Formada pela USP, com mestrado em Direito pela PUC-SP, já atuou em casos de grande repercussão nacional. Atualmente lidera nossa equipe com excelência e dedicação, garantindo que cada cliente receba a melhor assessoria jurídica possível.')" class="bg-amber-500 hover:bg-amber-600 text-white p-2 rounded-full transition transform hover:scale-110">
+                                    <i class="fas fa-user"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lawyer 2 -->
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden card-hover fade-in delay-1">
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <img src="imagens/Imagem do WhatsApp de 2025-05-30 à(s) 17.16.12_fbe6edb0.jpg" alt="Advogado" class="w-32 h-32 rounded-full object-cover border-4 border-gray-500 mb-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-white font-playfair">Dr. Renan Panzarini</h4>
+                            <p class="text-gray-400 font-medium mb-2 font-playfair">Advogado | OAB/SP 234.567</p>
+                            <p class="text-gray-300 text-sm mb-4 font-playfair">Especialista em Direito Civil e roubar a copel igual o Everson.</p>
+                            <div class="flex justify-center gap-3">
+                                <a href="https://wa.me/5511999999999" target="_blank" class="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full transition transform hover:scale-110">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition transform hover:scale-110">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <button onclick="openProfileModal('Dr. Carlos Eduardo Mendes', 'Sócio', 'OAB/SP 234.567', 'https://randomuser.me/api/portraits/men/32.jpg', 'Dr. Carlos Eduardo Mendes é especialista em Direito Civil com 15 anos de experiência. Formado pela Universidade de São Paulo, atua principalmente nas áreas de contratos, responsabilidade civil e direito das obrigações. Possui vasta experiência em mediação e arbitragem, tendo resolvido mais de 300 casos de forma extrajudicial.')" class="bg-amber-500 hover:bg-amber-600 text-white p-2 rounded-full transition transform hover:scale-110">
+                                    <i class="fas fa-user"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Lawyer 3 -->
+                <div class="bg-gray-700 rounded-lg shadow-md overflow-hidden card-hover fade-in delay-2">
+                    <div class="p-6 flex flex-col items-center text-center">
+                        <img src="imagens/Imagem do WhatsApp de 2025-05-30 à(s) 17.15.07_89ee95c2.jpg" alt="Advogada" class="w-32 h-32 rounded-full object-cover border-4 border-gray-500 mb-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-white font-playfair">Dra. Gabriela Mulinari</h4>
+                            <p class="text-gray-400 font-medium mb-2 font-playfair">Advogada | OAB/SP 345.678</p>
+                            <p class="text-gray-300 text-sm mb-4 font-playfair">Especialista em Direito Trabalista e ter cachorro bonito.</p>
+                            <div class="flex justify-center gap-3">
+                                <a href="https://wa.me/5511999999999" target="_blank" class="bg-green-500 hover:bg-green-600 text-white p-2 rounded-full transition transform hover:scale-110">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-full transition transform hover:scale-110">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <button onclick="openProfileModal('Dra. Juliana Ferreira', 'Advogada', 'OAB/SP 345.678', 'https://randomuser.me/api/portraits/women/28.jpg', 'Dra. Juliana Ferreira é especialista em Direito do Trabalho com 12 anos de experiência. Formada pela PUC-SP, atua tanto na defesa de empregados quanto de empregadores, com foco em rescisões contratuais, assédio moral e ações coletivas. Possui mestrado em Direito Social e já ministrou diversos cursos na área trabalhista.')" class="bg-amber-500 hover:bg-amber-600 text-white p-2 rounded-full transition transform hover:scale-110">
+                                    <i class="fas fa-user"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16 fade-in">
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 font-playfair">Conteúdos Jurídicos</h2>
+                <div class="w-24 h-1 bg-gray-500 mx-auto"></div>
+                <p class="text-gray-300 mt-6 max-w-2xl mx-auto font-playfair">Artigos e informações para ajudar você a entender melhor seus direitos.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md card-hover fade-in">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Artigo Jurídico" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center text-sm text-gray-400 mb-2">
+                            <span>Direito Civil</span>
+                            <span class="mx-2">•</span>
+                            <span>15/06/2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3 font-playfair">Como funciona o divórcio consensual?</h3>
+                        <p class="text-gray-300 mb-4 font-playfair">Entenda os passos necessários para realizar um divórcio de forma amigável e os documentos exigidos.</p>
+                        <button onclick="openArticleModal('Como funciona o divórcio consensual?', 'O divórcio consensual é a forma mais simples e rápida de dissolver um casamento quando ambos os cônjuges estão de acordo com todos os termos da separação. Neste artigo, explicamos os principais pontos:', ['Requisitos para o divórcio consensual', 'Documentos necessários', 'Partilha de bens e pensão alimentícia', 'Guarda dos filhos e regulamentação de visitas', 'Vantagens em relação ao divórcio litigioso'], 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB
+</html>
